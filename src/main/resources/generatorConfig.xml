@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- MyBatis3Simple：生成简单版本 -->
+	<!-- MyBatis3：生成动态SQL -->
+	<context id="MySQLTables" targetRuntime="MyBatis3">
+	
+		<!-- 不生成注释 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true"/>
+		</commentGenerator>	
+		
+		<!-- jdbc连接 -->
+		<jdbcConnection connectionURL="jdbc:mysql://172.30.60.14:3306/ssm" driverClass="com.mysql.jdbc.Driver" password="P@ssw0rd1" userId="stest1" />
+		
+		<!-- javabean生成策略 -->
+		<javaModelGenerator targetPackage="com.stone.bean" targetProject="ssm-crud\src\main\java">
+			<property name="enableSubPackages" value="true"/>
+			<property name="trimStrings" value="true"/>
+		</javaModelGenerator>
+		
+		<!-- 生成map.xml文件 -->
+		<sqlMapGenerator targetPackage="mapper" targetProject="ssm-crud\src\main\resources">
+			<property name="enableSubPackages" value="true"/>
+		</sqlMapGenerator>
+		
+		<!-- 生成mapxml对应client，也就是mapper接口 -->
+		<javaClientGenerator targetPackage="com.stone.dao" targetProject="ssm-crud\src\main\java" type="XMLMAPPER">
+			<property name="enableSubPackages" value="true"/>
+		</javaClientGenerator>
+		
+		<!-- 指定要逆向分析哪些表，根据表刺激javabean -->	
+		<table tableName="tbl_dept" domainObjectName="Department"></table>
+		<table tableName="tbl_emp" domainObjectName="Employee"></table>
+		
+	</context>
+</generatorConfiguration>
